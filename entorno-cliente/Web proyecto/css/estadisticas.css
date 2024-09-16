@@ -1,0 +1,473 @@
+@import url(comun.css);
+
+:root{
+    --color-aprobado: rgb(122, 238, 122);
+    --color-suspenso: rgb(219, 94, 78);
+}
+
+.contenido{
+    height: 135vh;
+}
+.mensajeError{
+    color: var(--color-azul-suave);
+    font-weight: bold;
+    background-color: var(--color-morado-medio);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* DISTRIBUCIÓN DE CELDAS Y ESTILO GENERAL*/
+.estadisticas{
+    display: grid;
+        grid-template-columns: 24vw 24vw 15.4vw 15.4vw 15.4vw;
+    grid-template-rows: 17vh 17vh 17vh 17vh 45vh;
+    grid-gap: 10px;
+    h2{
+        color: var(--color-morado-fuerte);
+        font-size: var(--size-medio);
+    }
+    h3{
+        color: var(--color-azul-medio);
+        letter-spacing: 2px;
+    }
+    
+    .item {
+        background-color: var(--color-morado-fuerte);
+        border: 3px solid var(--color-azul-fuerte);
+        border-radius: 10px;
+        text-align: center;
+        img{
+            width:50px;
+            height: 45px;
+        }
+    }
+    .item1 { 
+        grid-column: 1 / 2; 
+        grid-row: 1 / 5; 
+        background-image: url("../imagenes/teoricos.jpg");
+        background-size: cover;
+    }
+    .item2 { 
+        grid-column: 2 / 6;
+        grid-row: 1 / 2;
+        padding-top: 30px;
+    }
+    .item3 { 
+        grid-column: 2 / 3; 
+        grid-row: 2 / 3;
+    }
+    .item4 { 
+        grid-column:  3 / 6;
+        grid-row: 2 / 5; 
+    }
+    .item5 { 
+        grid-column: 2 / 3;
+        grid-row: 3 / 4; 
+    }
+    .item6{
+        grid-column: 2 / 3;
+        grid-row: 4 / 5; 
+    }
+    .item7{
+        grid-column: 1 / 6;
+        grid-row: 5 / 6;
+    }
+    .grande{
+        font-size: var(--size-grande);
+        color: var(--color-morado-suave);
+    }
+} 
+
+
+/* ITEM 2 - GRÁFICO DE BARRA HORIZONTAL */
+.item2 {
+    padding: 15px;
+    .barra {
+        width: 90%; /* Ancho de la barra */
+        height: 30px; /* Altura de la barra */
+        margin: 0 auto; /* Margen para centrar la barra */
+        .aprobados, .suspensos{
+            height: 100%;
+            float: left;
+            padding-top: 3.5px;
+            color: black;
+            font-weight: bold;
+            text-align: center;
+            line-height: 25px;  /* Asegura que el texto esté centrado verticalmente */
+        }
+        .aprobados {
+            background-color: var(--color-aprobado); /* Color rojo */
+        }
+        .suspensos {
+
+            background-color: var(--color-suspenso); /* Color azul */
+        }
+    }
+    .leyendas {
+        display: flex;
+        text-align: center;
+        padding: 0px 30px;
+        margin: 10px 10px 0px; /* Espacio entre la barra y la sección de información */
+        letter-spacing: 3px;
+        .aprobados-legend{
+            width: 30%;
+            color: var(--color-aprobado);
+        }
+        .suspendidos-legend{
+            width: 70%;
+            color: var(--color-suspenso);
+        }
+    }
+}
+
+
+
+/* ITEM 3 - TARJETA GIRATORIA */
+.item3{
+    position: relative;
+    perspective: 2000px; /* Añadir perspectiva para que el giro sea más realista */
+    .front, .back{
+        border-radius: 7px;
+        padding: 10px 5px;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        position: absolute;
+        transition: transform .5s linear 0s;
+    }
+    .front{
+        background-color: var(--color-morado-fuerte);
+        border: 3px solid var(--color-azul-fuerte);
+        transform: perspective(600px) rotateY(0deg);
+        backface-visibility: hidden;
+    }
+    .back{
+        background-color: var(--color-azul-fuerte);
+        border: 3px solid var(--color-morado-fuerte);
+        text-align: center;
+        display: flex;
+        justify-content: space-around;
+        transform: perspective(600px) rotateY(180deg);
+        backface-visibility: hidden;
+        transition: transform .5s linear 0s;
+        .columna2 h3, .columna2 p{
+            margin-left: 30px;
+        }
+        h3{
+            color: var(--color-morado-fuerte);
+        }
+        p{
+            color: var(--color-azul-suave);
+        }
+    }
+    &:hover{
+        .front {
+            transform: perspective(600px) rotateY(-180deg);
+        }
+        .back {
+            transform: perspective(600px) rotateY(0deg);
+        }
+    }
+}
+
+/* ITEM 4 - GRÁFICO CIRCULAR */
+.item4{
+    padding: 20px;
+}
+.grafico-contenedor {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.leyendas-izquierda,
+.leyendas-derecha {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 20px;
+    color: white;
+}
+
+.leyenda {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.grafico {
+    width: 150px;
+    margin-top:15px;
+}
+/* ITEM 5 - TARJETA CON TEXTO EMERGENTE HACIA ARRIBA */
+.item5 {
+    position: relative;
+    padding: 10px;
+    .titulo {
+        width: 100%;
+        position: absolute;
+        top: 73%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        opacity: 1;
+        transition: top 0.3s ease;
+    }
+    /* Número de aciertos que se hará visible al hacer hover */
+    .emergente {
+        z-index: 1;
+        text-align: center;
+        opacity: 0; 
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        height: 40%; /* Asegurar que ocupe toda la altura del contenedor */
+        p{
+            font-size: var(--size-grande);
+            color: var(--color-morado-suave);
+        }
+        .circulo {
+            width: 60px;
+            height: 60px;
+            background-color: var(--color-morado-medio); /* Color del círculo */
+            border-radius: 50%; /* Hace que el div sea un círculo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* Necesario para el posicionamiento del "4" */
+            p {
+                z-index: 2; /* Asegura que el "4" esté por encima de otros elementos */
+                color: white; /* Color del texto */
+                font-size: var(--size-grande);
+                font-weight: bold;
+            }  
+        }
+    }
+    &:hover{
+        background-color: var(--color-azul-fuerte);
+        border: 3px solid var(--color-morado-fuerte);
+        h3{
+            color: var(--color-morado-fuerte);
+        }
+        p{
+            color: var(--color-azul-suave);
+        }
+        .titulo {
+            top: 20%;
+        }
+        .emergente {
+            opacity: 1;
+            transition: opacity 3s ease; /* Transición para que el número de fallos aparezca poco a poco*/
+        }
+        img{
+            opacity: 0;
+        }
+    }   
+}
+
+
+/* ITEM 6 - RECOMENDACIÓN DE LA AUTOESCUELA */
+.item6{
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    &:hover{
+        background-color: var(--color-azul-fuerte);
+        border: 3px solid var(--color-morado-fuerte);
+        cursor: zoom-in;
+        animation: zoom 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite; /* Usar la animación "zoom" de forma continua durante 2 segundos */
+        h3{
+            color: var(--color-morado-fuerte);
+            display: flex;
+            justify-content: end;
+        }
+    }
+}
+
+/* Animación para que se agrande y reduzca cuando hacemos hover*/
+@keyframes zoom {
+    0%, 100% { transform: scale(1); } /* Sin zoom */
+    50% { transform: scale(1.2); } /* Zoom al 120% */
+}
+
+/* Estilos para el modal */
+.modalOculto {
+    display: none; /* Ocultar el modal por defecto */
+}
+
+/* Contenido del modal */
+.modal-content {
+    width: 100%;
+    margin: auto; /* Centrar vertical y horizontalmente */
+    padding: 20px;
+    border: 2px solid var(--color-azul-suave);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#modal-message{
+    font-size: var(--size-medio);
+    text-align: center;
+}
+.iconoModal{
+    margin-left: -30px;
+}
+.lanzaModal{
+    width: 600px;
+    height: 400px;
+    display:block;
+    animation: mostrarModal 2s normal;
+}
+/* Estilos para el fondo oscuro mientras esté activa la ventana modal*/
+.contenedor-ventana {
+    display: none;
+    z-index: 4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(20, 8, 2, 0.8);
+}
+/* Clase para mostrar el fondo oscuro */
+.mostrar-fondo-oscuro {
+    animation: mostrarFondoOscuro 1s normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@keyframes mostrarModal {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+@keyframes mostrarFondoOscuro {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+
+/* ITEM 7 - DATOS DE INTERÉS */
+.item7{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .datosInteres{
+        display: flex;
+        justify-content: space-around;
+        letter-spacing: 2px;
+        div{
+            padding: 10px;
+            width: 270px;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            border-radius: 20px;
+            p{
+                width: 250px;
+                height: 90px;
+            }
+            .resultado{
+                font-weight: bold;
+            }
+        }
+        .temaMasSuspendido{
+            background-color: var(--color-azul-fuerte);
+        }
+        .temaMasAprobado{
+            background-color: var(--color-morado-suave);
+        }
+        .progresoMesActual{
+            /* background-color: var(--color-suspenso); */
+            background-color: var(--color-aprobado);
+        }
+        .temaMenosPracticado{
+            background-color: var(--color-morado-medio);
+  
+        }
+    }
+}
+
+
+/* --------------------------MEDIA QUERYS--------------------------*/
+/* Para 1920x1080px*/
+@media screen and (min-width: 1800px) {
+    .contenido{
+        height: 80vh;
+    }
+    .estadisticas{
+        grid-template-columns: 24.5vw 24.5vw 15.70vw 15.70vw 15.70vw;
+        grid-template-rows: 11vh 11vh 11vh 11vh 24vh;
+        .item h3, .leyenda-texto, .datosInteres p{
+            font-size: var(--size-medio-peque);
+        }
+    }
+}
+
+
+
+
+
+
+/* Vista móvil */
+@media (width<=450px) {
+    .estadisticas{
+        display: flex;
+        flex-direction: column;
+    }
+    .contenido{
+        height: inherit;
+        padding-bottom: 20px;
+    }
+    .item1, .item2, .item3, .item5, .item6{
+        height: 100px;
+    }
+    .grafico-contenedor{
+        flex-direction: column;
+    }
+    .item2 .leyendas{
+        margin: inherit;
+        padding: 0px 0px;
+    }
+    .item7 .datosInteres{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 10px;
+    }
+    .modal-content{
+        width: 70%;
+    }
+}
+
+
+
+
+
+
+

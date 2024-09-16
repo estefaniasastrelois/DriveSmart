@@ -1,0 +1,461 @@
+/* ---------------------------GENERAL---------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Orbitron&display=swap');
+@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
+
+/* Declaración de variables */
+:root{
+    --size-muy-peque: 12px;
+    --size-peque: 16px;
+    --size-normal: 17px;
+    --size-medio-peque: 22px;
+    --size-medio: 29px;
+    --size-medio-grande: 37px;
+    --size-grande: 45px;
+    --size-muy-grande: 55px;
+    --fuente-futurista: 'Orbitron', sans-serif;
+    --fuente-plus: 'Bungee', sans-serif;
+
+    --color-morado-muy-fuerte: #241532;
+    --color-morado-fuerte: #470c4e;
+    --color-morado-medio: #ae43b7;
+    --color-morado-suave: #fbd2fb;
+
+    --color-azul-fuerte:#238b9b;
+    --color-azul-medio: #2DCDD4;
+    --color-azul-suave: #c7f4f6;
+
+    --color-blanco-transparente: rgba(255, 255, 255, 0.8);
+    --color-azul-fuerte-transparente: rgba(35, 139, 155, 0.5);
+    --color-azul-medio-transparente: rgba(45, 205, 212,0.8);
+    --color-morado-suave-transparente: rgba(174, 67, 183,0.3);
+    --color-morado-medio-transparente: rgba(174, 67, 183,0.9);
+    --color-negro-transparente: rgba(0, 0, 0, 0.4);
+}
+
+/* Reset general de valores */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--fuente-futurista);
+    font-size: var(--size-normal);
+}
+body{
+    overflow-x: hidden;
+}
+h1{
+    font-size: var(--size-grande);
+}
+button{
+    padding: 0px 15px;
+    border-radius: 15px;
+    background-color: var(--color-azul-medio);
+    margin-bottom: 15px;
+    color: var(--color-morado-medio);
+    font-family: var(--fuente-plus);
+    cursor: pointer;
+}
+.icono, i,.divPerfil, .perfilMenuVisible, .divCambiarPass{
+    cursor: pointer;
+}
+.guardar, .guardarDiv{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+.enlacePermiso{
+    color: black;
+    text-align: center;
+    text-decoration: none;
+}
+/* ---------------------------SUBMENU USUARIO LOGUEADO---------------------------*/
+.divPerfil{
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    align-items: center;
+    p{
+        font-size: var(--size-medio-peque);
+    }
+}
+.iconoPerfil{
+    width: 30px;
+    height: 30px;
+}
+
+/*CSS (puedes agregar esto en tu archivo CSS) */
+.perfilMenuOculto {
+    display: none;
+}
+
+.perfilMenuVisible{
+    height: 80px;
+    margin-top: 118px;
+}
+.perfilMenuVisibleAdmin{
+    height: 50px;
+    margin-top: 90px;
+}
+.perfilMenuVisible, .perfilMenuVisibleAdmin {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    background-color: var(--color-morado-suave);
+    /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+    z-index: 1;
+    margin-left: -52px;
+    width: 240px;
+
+    border-radius: 0px 0px 10px 10px;
+}
+
+.perfilMenuVisible a, .perfilMenuVisibleAdmin a {
+    text-decoration: none;
+    display: flex;
+    color: var(--color-morado-fuerte);
+    justify-content: center;
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.perfilMenuVisible a:hover, .perfilMenuVisibleAdmin a:hover {
+    background-color: var(--color-morado-medio);
+
+}
+
+
+/* ---------------------------CABECERA---------------------------*/
+header {
+    background-color: var(--color-morado-muy-fuerte);
+    color: var(--color-azul-medio);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 15vh;
+}
+/* Eslogan */
+header h1{
+    letter-spacing: 5px;
+    font-weight: bold;
+}
+/* Logo */
+header img{
+    height: 70px; 
+    width: 175px;
+}
+
+/* ---------------------------MENÚ SUPERIOR--------------------------- */
+nav {
+    background-color: var(--color-azul-medio);
+    padding: 7px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 9vh;
+}
+.enlaceMenuPrincipal{
+    color: var(--color-morado-fuerte);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: var(--size-medio-peque);
+    padding: 5px 52px;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s;
+    width: 240px;
+}
+.enlaceMenuPrincipalAnonimo{
+    width: 302px;
+}
+nav a:hover {
+    background-color: var(--color-azul-fuerte);
+    color: var(--color-morado-suave);
+}
+nav i{
+    color: var(--color-morado-fuerte);
+    font-size: 35px;
+}
+
+/* ---------------------------VENTANA DE LOGIN---------------------------*/
+.divLoginOculto{
+    display: none;
+}
+.divLoginVisible{
+    position: absolute;
+    top: 22.5%;
+    left: 71.7%;
+    width: 380px;
+    height: 240px;
+    border: 3px solid black;
+    border-radius: 20px;
+    background-image: url(../imagenes/pruebacarnet.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 5;
+}
+#loginForm{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 80%;
+    .datosSecciones{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 40%;
+        width: 86%;
+        margin-top: -5px;
+        .seccion{
+            display: flex;
+            flex-direction: row;
+            label{
+                display: flex;
+                width: 30%;
+                margin-right: 10px;
+            }
+            input{
+                display: flex;
+                width: 80%;
+            }
+        }
+    }
+    .enviar{
+        margin-top: -20px;
+        .btnLogin{
+            background-color: var(--color-morado-fuerte);
+            color: var(--color-azul-medio);
+            height: 40px;
+            margin-top: -5px;
+            &:first-child{
+                font-size: 14px;
+            }
+            &:hover{
+                background-color: var(--color-azul-medio);
+            color: var(--color-morado-fuerte);
+            }
+        }
+    }
+
+    .registro{
+        margin-top: -37px;
+        font-size: var(--size-muy-peque);
+        a{
+            font-size: var(--size-peque);
+            &:hover{
+                color: var(--color-azul-fuerte);
+            }
+        }
+    }
+}
+#errorMessage{
+    font-size: var(--size-peque);
+}
+
+
+/* ---------------------------RESTO DE LA PÁGINA--------------------------- */
+body{
+    background-color: var(--color-azul-transparente);
+}
+.contenido{
+    overflow: hidden;
+    background-color: var(--color-azul-suave);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 15px;
+}
+
+/* ---------------------------FOOTER--------------------------- */
+footer{
+    background-color: var(--color-morado-fuerte);
+    color: var(--color-morado-suave);
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 99.2vw;
+}
+footer .filaPrincipal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 12px;
+}
+footer .filaPrincipal div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 20vw;
+}
+footer .info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer .info p{
+    font-size: var(--size-muy-peque);
+}
+footer a, footer p{
+    color: inherit; /* Esto heredará el color del texto de su contenedor */
+    text-decoration: none; /* Esto elimina el subrayado */
+    padding: 5px 10px;
+}
+footer a:hover{
+    border-radius: 5px;
+    background-color: var(--color-azul-suave);
+    color: var(--color-morado-fuerte);
+}
+footer h4{
+    padding-bottom: 10px;
+    color: var(--color-azul-medio);
+    border-bottom: 3px solid var(--color-azul-medio);
+}
+footer p{
+    color: var(--color-azul-suave);
+}
+
+
+
+
+/* --------------------------MEDIA QUERYS--------------------------*/
+/* Para HD: 1920x1080px*/
+@media screen and (min-width: 1800px) {
+    header{
+        height: 14vh;
+    }
+    button{
+        font-size: var(--size-medio-peque);
+        width: 250px;
+        height: 60px;
+    }
+    .contenido h1{
+        font-size: var(--size-muy-grande);
+    }
+    nav{
+        height: 7vh;
+    }
+    header img{
+        height: 100px;
+        width: 200px;
+    }
+    .enlaceMenuPrincipal, .perfilMenuVisibleAdmin, .perfilMenuVisible{
+        width: 370px;
+    }
+    .perfilMenuVisible{
+        height: 100px;
+        margin-top: 145px;
+    }
+    .enlaceMenuPrincipal, .enlaceMenuPrincipal p{
+        font-size: var(--size-medio);
+    }
+    .enlaceMenuPrincipal img{
+        width: 40px;
+        height: 40px;
+    }
+    footer h4, footer a, footer p{
+        font-size: var(--size-medio-peque);
+    }
+    .perfilMenuVisibleAdmin, .perfilMenuVisible{
+        a{
+            font-size: var(--size-medio-peque);
+        }
+    }
+    .divLoginVisible {
+        width: 476px;
+        height: 300px;
+        position: absolute;
+        top: 19.5%;
+        left: 75.2%;
+        label, input{
+            font-size: var(--size-medio-peque);
+        }
+        #loginForm{
+            .registro{
+                font-size: var(--size-normal);
+            }
+            .enviar .btnLogin:first-child{
+                font-size: var(--size-normal);
+            }
+            .datosSecciones{
+                margin-top: 2px;
+            }
+        }
+    }
+}
+
+
+/* Para móvil */
+@media screen and (max-width: 500px) {
+    h1{
+        font-size: var(--size-medio-grande);
+    }
+    .contenido{
+        min-height: 1000px;
+    }
+    header{
+        height: 10vh;
+        h1{
+            font-size: var(--size-medio-peque);
+            margin-left: 20px;
+        }
+        img{
+            height: 60px;
+            width: 145px;
+            margin-right: 20px;
+        }
+    }
+    .enlaceMenuPrincipal, .divPerfil p {
+        font-size: var(--size-normal);
+        padding: 0px;
+        width: inherit;
+    }
+   
+    .iconoPerfil{
+        width: 20px;
+        height: 20px;
+    }
+    nav{
+        height: 50px;
+    }
+    footer{
+        .filaPrincipal{
+            flex-direction: column;
+            div {
+                width: 70vw;
+                padding: 5px 10px;
+            }
+            a,p{
+                font-size: var(--size-peque);
+            }
+        }
+    }
+    .divLoginVisible{
+        top: 15%;
+        left: 34.7%;
+        width: 280px;
+        height: 180px;
+        label, button{
+            font-size: var(--size-peque);
+        }
+    }
+    #loginForm{
+        margin-top: 45px;
+        .registro {
+            a {
+                font-size: var(--size-muy-peque);
+            }
+        }
+        .datosSecciones .seccion input{
+            font-size: var(--size-peque);
+        }
+
+    }
+
+    button{
+        font-size: var(--size-peque);
+    }
+}

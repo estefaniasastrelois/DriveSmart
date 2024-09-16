@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica test</title>
+    <link rel="stylesheet" href="../../css/practica_test.css">
+    <script src="../../js/logueado/menuUserLogueado.js"></script>
+    <script>
+        //Solo permite entrar a usuarios logueados
+        (function() {
+            const usuarioRol = localStorage.getItem("usuarioRol");
+
+            if (usuarioRol == null) {
+                alert("No tiene permisos para acceder a esta página");
+                window.location.href = "../home.html";
+            }
+        })();
+    </script>
+</head>
+<body>
+    <header></header>
+    <nav></nav>
+    <div class="contenido">
+        <h1 class="tituloPrincipal tituloPaso">Selecciona permiso</h1>
+        <p id="mensaje-matricula" class="mensaje-matricula-oculto">Debe acudir a su autoescuela para matricularse antes de poder realizar test</p>
+        <div class="pasoUno">
+            <div class="lista-permisos"></div>
+            <div class="contenedor-seleccion-ambito-oculto">
+                <div class="permiso-seleccionado"></div>
+                <img src="../../imagenes/back.png" id="btnVolver" class="btnVolver">
+                <h2 class="tituloPaso">Selecciona ámbito</h2>
+                <div class="opciones-seleccion">
+                        <button id="btnGlobal" class="btnGlobal">Global</button>
+                        <button id="btnTemas" class="btnTemas">Temas</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pasoDos">
+                <div class="contenedor-test-filtrados-oculto"></div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="modal" class="modal ventanaTest">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Contenido del test</h2>
+            <div class="preguntasTest"></div>
+            <div id="fallosTest" class="fallosTest oculto"></div>
+            <div class="divTerminar">
+                <button id="btnTerminar" class="btnTerminar">Terminar</button>
+                <button id="btnCerrar" class="btnCerrar" style="display: none;">Cerrar</button>
+            </div>
+        </div>
+    </div>
+    <div id="modalMensajeTestIncompleto" class="modal mensaje-incompleto">
+        <div class="modal-content">
+            <p>Por favor, responda todas las preguntas antes de terminar el test.</p>
+        </div>
+    </div>
+    <script src="../../js/logueado/practica_test.js"></script>
+</body>
+</html>

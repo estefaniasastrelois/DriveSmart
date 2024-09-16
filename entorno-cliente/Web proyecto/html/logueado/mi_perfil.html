@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi perfil - DriveSmart</title>
+    <link rel="stylesheet" href="../../css/mi_perfil.css">
+    <script src="../../js/logueado/mi_perfil.js"></script>
+    <script src="../../js/logueado/menuUserLogueado.js"></script>
+    <script>
+        //Solo permite entrar a usuarios logueados
+        (function() {
+            const usuarioRol = localStorage.getItem("usuarioRol");
+
+            if (usuarioRol == null) {
+                alert("No tiene permisos para acceder a esta página");
+                window.location.href = "../home.html";
+            }
+        })();
+    </script>
+</head>
+<body>
+    <header></header>
+    <nav></nav>
+    <div class="contenido">
+        <h1 class="tituloEditarPerfil">Editar Perfil</h1>
+        <form id="edit-profile-form" class="formEditarPerfil">
+            <div class="divContenidoFormEditarPerfil">
+                <!-- Formulario para editar perfil personal -->
+                <div class="formEditarPerfilParte1">
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellidos">Apellidos:</label>
+                        <input type="text" id="apellidos" name="apellidos" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dni">DNI:</label>
+                        <input type="text" id="dni" name="dni" required>
+                    </div>
+                </div>
+                <div class="formEditarPerfilParte2">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" id="telefono" name="telefono" required>
+                    </div>
+                    <div class="divCambiarPass">
+                        <i class="bx bxs-lock-open iconoCandado"></i>
+                        <a id="cambiarPass" class="cambiarPass">Cambiar Contraseña</a>
+                    </div>
+                    <input type="hidden" id="miPass" name="miPass">
+                    <div id="cambiarPassCampos" class="cambiarPassCampos" style="display: none;">
+                        <div class="form-group">
+                            <label for="old-password">Contraseña Anterior:</label>
+                            <input type="password" id="old-password" name="old-password">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">Nueva Contraseña:</label>
+                            <input type="password" id="new-password" name="new-password">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Repetir Nueva Contraseña:</label>
+                            <input type="password" id="confirm-password" name="confirm-password">
+                        </div>
+                        <!--Campo oculto que se muestra en caso de introducir mal las contraseñas-->
+                        <p id="mensajePass" class="mensaje-pass-oculto"></p>
+                    </div>
+                </div> 
+            </div>
+            <button type="button" id="guardarSinPass" class="guardarSinPass">Guardar</button>
+            <button type="button" id="guardarConPass" class="guardarConPass" style="display: none;">Guardar</button>
+        </form>
+        <!-- Modal -->
+        <div id="successModal" class="modalMensaje">
+            <div class="modalMensaje-content">
+                <p>Perfil actualizado correctamente</p>
+            </div>
+        </div>
+    </div>
+    <footer></footer>
+</body>
+</html>

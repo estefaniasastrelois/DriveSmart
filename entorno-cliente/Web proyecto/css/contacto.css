@@ -1,0 +1,199 @@
+@import url(comun.css);
+
+footer{
+    width: 100%;
+}
+/* ------------------------PARTE SUPERIOR------------------------ */
+/* ------Datos de contacto------*/
+.contenido h2{
+    display:flex;
+    font-size: var(--size-grande);
+}
+.filaPrincipal{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 50px;
+    gap: 30px;
+}
+.contenido article{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.items{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 85%;
+}
+.itemcontacto{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+.contenido i{
+    font-size: 60px;
+    color: var(--color-azul-medio);
+}
+.infocontacto{
+    display:flex;
+    flex-direction: column;
+    gap: 15px;
+}
+span{
+    color: var(--color-morado-medio);
+}
+.titulosocial{
+    
+    margin-left: 80px;
+}
+/* Social */
+.social{
+    border: 2px solid var(--color-morado-fuerte);
+    padding: 5px;
+    margin-left: 18px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.social i{
+    color: var(--color-morado-medio);
+    font-size: 40px;
+    &:hover{
+        color: var(--color-azul-fuerte);
+    }
+}
+
+/*------Mapa------*/
+.ubicacion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    justify-content: center;
+}
+.ubicacion i{
+    font-size: 200px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+}
+.ubicacion p{
+    font-size: var(--size-medio);
+}
+
+
+/* ------------------------PARTE INFERIOR------------------------ */
+.filaDos{
+    height: 370px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    margin-top: 30px;
+}
+.filaDos h2{
+    border-bottom: 3px solid var(--color-morado-fuerte);
+    margin-bottom: 10px;
+}
+.ubicaciones{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100vw;
+}
+.ubicaciones div{
+    width: 300px;
+    height: 180px;
+    background-color: var(--color-azul-fuerte-transparente);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+.ubicaciones div h3{
+    font-size: var(--size-medio);
+}
+.mapa .titulo{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.mapa{
+    display: flex;
+    align-items: center;
+    width: 50vw;
+}
+
+
+
+/* --------------------------MEDIA QUERYS--------------------------*/
+/* Para 1920x1080px*/
+@media screen and (min-width: 1800px) {
+    .contenido h2{
+        font-size: var(--size-muy-grande);
+    }
+    .filaDos h2{
+        width: 27vw;
+    }
+    .contenido i{
+        font-size: 80px;
+    }
+    .infocontacto p, .infocontacto span{
+        font-size: var(--size-medio-peque);
+    }
+    iframe{
+        width: 850px;
+        height: 580px;
+    }
+    .itemAutoescuela p{
+        font-size: var(--size-medio-peque)
+    }
+}
+
+/* Para móvil */
+@media screen and (max-width: 500px) {
+    .filaPrincipal{
+        flex-direction: column;
+        gap: 50px;
+        align-items: center;
+        padding: 10px;
+    }
+    .contenido h2{
+        font-size: var(--size-medio);
+    }
+    .contenido i{
+        font-size: 40px;
+    }
+    .items{
+        gap: 20px;
+    }
+    .mapa{
+        width: 115%;
+    }
+    iframe{
+        width: 90%;
+        height: 300px;
+    }
+    .filaDos{
+        height: inherit;
+        margin-bottom: 40px;
+        h2{
+            width: inherit;
+        }
+    }
+    .ubicaciones{
+        width: 93vw;
+        flex-wrap: wrap;
+        gap: 1px;
+        h3{
+            font-size: var(--size-medio-peque);
+        }
+        div{
+            width: 190px;
+        }
+    }
+}

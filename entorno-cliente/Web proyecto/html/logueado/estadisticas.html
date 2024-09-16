@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis estadísticas - DriveSmart</title>
+    <link rel="stylesheet" href="../../css/estadisticas.css">
+    <script src="../../js/logueado/estadisticas.js"></script>
+    <script src="../../js/logueado/menuUserLogueado.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        //Solo permite entrar a usuarios logueados
+        (function() {
+            const usuarioRol = localStorage.getItem("usuarioRol");
+            const usuarioId = localStorage.getItem("usuarioId");
+
+            if (!usuarioRol || !usuarioId) {
+                alert("No tiene permisos para acceder a esta página");
+                window.location.href = "../home.html";
+                return;
+            }
+            verificarTestsRealizados(usuarioId);
+        })();
+    </script>
+</head>
+<body>
+    <header></header>
+    <nav></nav>
+    <div class="contenido">
+        <p id="mensajeError" class="mensajeError" style="display: none;">Debe realizar test antes de calcular sus estadísticas</p>
+        <div id="contenidoPrincipal" style="display: none;">
+        <div class="estadisticas">
+            <div class="item item1"><h2>Resultados</h2></div>
+            <div class="item item2">
+                <div class="barra">
+                    <div class="aprobados" id="aprobados">Cargando...</div>
+                    <div class="suspensos" id="suspensos">Cargando...</div>
+                </div>
+                <div class="leyendas">
+                        <p class="aprobados-legend">aprobados</p>
+                        <p class="suspendidos-legend">suspensos</p>
+                </div>
+            </div>
+            <div class="item3">
+                <div class="front">
+                    <h3>Nº tests realizados</h3>
+                    <p class="grande" id="total-test">Cargando...</p>
+                </div>
+                <div class="back">
+                    <div class="columna1">
+                        <h3>Por temas</h3>
+                        <p class="grande" id="test-por-temas">Cargando...</p>
+                    </div>
+                    <div class="columna2">
+                        <h3>Global</h3>
+                        <p class="grande" id="test-globales">Cargando...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="item item4">
+                <h3>¿Qué temas has practicado menos?</h3>
+                <div class="grafico-contenedor">
+                    <div class="leyendas-izquierda">
+                        <div class="leyenda"><span class="color-box"></span><p class="leyenda-texto">Tema 1</p></div>
+                        <div class="leyenda"><span class="color-box"></span><p class="leyenda-texto">Tema 2</p></div>
+                    </div>
+                    <div class="grafico">
+                        <canvas id="temasChart"></canvas>
+                    </div>
+                    <div class="leyendas-derecha">
+                        <div class="leyenda"><span class="color-box"></span><p class="leyenda-texto">Tema 3</p></div>
+                        <div class="leyenda"><span class="color-box"></span><p class="leyenda-texto">Tema 4</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="item item5">
+                <img src="../../imagenes/ojo.png">
+                <h3 class="titulo">Media de fallos por test</h3>
+                <div class="emergente">
+                    <div class="circulo">
+                        <p class="numFallos" id="media-fallos">Cargando...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="item item6">
+                <img src="../../imagenes/pregunta.png">
+                <h3>Consultar recomendación</h3>
+            </div>
+            <div class="item item7">
+                <h3>Datos de interés</h3>
+                <div class="datosInteres">
+                    <div class="temaMasSuspendido">
+                        <p>El tema del que más test has suspendido es:</p>
+                        <p class="resultado">Cargando...</p>
+                    </div>
+                    <div class="temaMasAprobado">
+                        <p>El tema del que menos test has suspendido es:</p>
+                        <p class="resultado">Cargando...</p>
+                    </div>
+                    <div class="progresoMesActual">
+                        <p>Tu progreso respecto al mes anterior es:</p>
+                        <p class="resultado">Adecuado</p>
+                        <!--<p>Desfavorable</p>-->
+                    </div>
+                    <div class="temaMenosPracticado">
+                        <p>El tema que menos has practicado es:</p>
+                        <p class="resultado">Cargando...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Ventana modal que se muestra al hacer click sobre el item6 -->
+    <div class="contenedor-ventana">
+        <div id="modal" class="modalOculto">
+            <div class="modal-content">
+                <img width="200px" height="200px" class="iconoModal">
+                <p id="modal-message"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

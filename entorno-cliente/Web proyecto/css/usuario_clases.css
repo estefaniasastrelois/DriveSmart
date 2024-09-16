@@ -1,0 +1,393 @@
+@import url(comun.css);
+
+/* -----------------------------ESTILOS GENERALES-----------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.vistaTabla h1 {
+  margin-bottom: 15px;
+}
+.wrapper {
+  margin: 20px;
+  width: 1250px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+.cabeceraMes {
+  background-color: var(--color-morado-fuerte);
+}
+.wrapper .cabeceraMes {
+  display: flex;
+  align-items: center;
+  padding: 25px 30px 10px;
+  justify-content: space-between;
+}
+.cabeceraMes .iconos {
+  display: flex;
+}
+.cabeceraMes .iconos span {
+  height: 38px;
+  width: 38px;
+  margin: 0 1px;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+  line-height: 38px;
+  font-size: 1.9rem;
+  user-select: none;
+  border-radius: 50%;
+}
+.iconos span:last-child {
+  margin-right: -10px;
+}
+.cabeceraMes .iconos span:hover {
+  background: var(--color-azul-medio);
+}
+.cabeceraMes .fecha-actual {
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: white;
+}
+.calendario {
+  padding: 20px;
+}
+.calendario ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  text-align: center;
+}
+.calendario .dias {
+  margin-bottom: 20px;
+}
+.calendario li {
+  box-sizing: border-box;
+  margin: 2px;
+  color: #333;
+  width: calc((100% / 7) - 4px); /* Restamos el margen izquierdo y derecho */
+  font-size: 1.07rem;
+}
+.calendario .semanas li {
+  font-weight: 500;
+  cursor: default;
+}
+.calendario .dias li {
+  z-index: 1;
+  cursor: pointer;
+  position: relative;
+  margin-top: 15px;
+  height: 166px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.calendario li .diaActual {
+  background-color: var(--color-azul-medio)  !important;;
+}
+/* -----------------------------CAMBIO DE VISTA CON ANIMACIONES-----------------------------*/
+.opciones{
+  display:flex;
+  width: 100%;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Añadimos clase para la vista inicial */
+.desdeDerechaInicial {
+  animation: entrarDesdeDerecha 0.5s forwards;
+}
+
+.oculto {
+  display: none;
+}
+
+.mostrar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+.desdeDerecha {
+  animation: entrarDesdeDerecha 0.5s forwards;
+}
+
+.desdeCentro {
+  animation: salirHaciaIzquierda 0.5s forwards;
+}
+
+@keyframes entrarDesdeDerecha {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes salirHaciaIzquierda {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+/* -----------------------------VISTA CALENDARIO-----------------------------*/
+.seleccion-hora {
+  display: none;
+}
+.dias li:not(.seleccionado):hover {
+  background: #f2f2f2; /* Color de fondo al pasar el ratón sobre un día no seleccionado */
+}
+.divDia {
+  font-size: 1.2rem;
+  margin-bottom: 5px; /* Espacio entre el día y los eventos */
+  height: 25px;
+  width: 100%;
+  background-color: gainsboro;
+}
+.divEventos {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.clase {
+  background-color: var(--color-morado-medio);
+  color: white;
+  padding: 2px;
+  border-radius: 3px;
+}
+
+/* Días inactivos o fines de semana */
+.dias li.inactivo {
+  color: #aaa;
+}
+.dias li.fin-de-semana {
+  background-color: var(--color-morado-suave);
+  color: #aaa;
+  pointer-events: none;
+}
+.dias li.fin-de-semana .divDia {
+  background-color: #e0e0e0;
+}
+
+/* Selección de turno */
+.divTurno, .divPermiso {
+  background-color: var(--color-azul-medio);
+  border-radius: 5px;
+  padding: 20px;
+  width: 330px;
+}
+
+/* Clases disponibles/ocupadas*/
+.clase {
+  background-color: var(--color-morado-medio);
+  color: white;
+  padding: 2px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.clase.disponible {
+  background-color: var(--color-morado-medio);
+  color: white;
+}
+.clase.ocupada{
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+/* Modal de nueva reserva*/
+.modal {
+  display: none; /* Modal oculto por defecto */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 50% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  p{
+    margin-bottom: 15px;
+  }
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#confirmar {
+  background-color: var(--color-azul-medio);
+  color: black;
+}
+#cancelar {
+  background-color: var(--color-morado-medio);
+  color: white;
+}
+.mensaje-vacio{
+  font-weight: bold;
+  margin: auto;
+  color: rgb(230, 2, 2);
+}
+/* -----------------------------MIS RESERVAS-----------------------------*/
+.clase.mi-reserva {
+  background-color: var(--color-azul-medio); 
+  color: white;
+}
+
+/* Tabla de mis clases */
+.tablaMisClases th{
+  background-color: var(--color-morado-medio);
+  color: white;
+}
+.tablaMisClases th, .tablaMisClases td{
+  padding: 10px;
+}
+.tablaMisClases td{
+  background-color: var(--color-morado-suave);
+}
+.clasePasada {
+  color: white; /* Color de texto para filas pasadas */
+  td{
+    background-color: #aaa; /* Color de fondo para filas pasadas */
+  }
+}
+.destacar {
+  color: var(--color-azul-fuerte);
+  font-weight: bold;
+}
+.vistaTabla{
+  margin-bottom: 100px;
+}
+
+
+/*------------------PAPELERA Y MODAL DE CONFIRMACIÓN DE BORRADO---------------- */
+/* Estilos para la papelera */
+.papelera {
+  cursor: pointer;
+  width:30px;
+  height: 30px;
+}
+
+
+#modal-confirmacion-borrar .modal-content {
+  text-align: center;
+  padding: 20px;
+}
+
+#modal-confirmacion-borrar .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#modal-confirmacion-borrar .buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.buttons button{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Modal de nueva reserva */
+.modal {
+  display: none; /* Modal oculto por defecto */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content{
+  margin: 15% auto;
+}
+
+/* --------------------------MEDIA QUERYS--------------------------*/
+/* Para 1920x1080px*/
+@media screen and (min-width: 1800px) {
+  .contenido{
+    min-height: 80vh;
+  }
+  #btnVistaCalendario{
+    width: 340px;
+  }
+  table td, table th{
+    font-size: var(--size-medio-peque);
+  }
+  .divPermiso, .divTurno{
+    width: 400px;
+  }
+  .divPermiso label, .divPermiso select, .divTurno label, .divTurno select{
+    font-size: var(--size-medio-peque);
+  }
+  .divEventos{
+    div{
+      font-size: var(--size-medio-peque);
+    }
+  }
+  .calendario .dias li{
+    height: 195px;
+  }
+  .modal-content{
+    max-width: 750px;
+    margin: 25% auto;
+    p, span, select, label{
+      font-size: var(--size-medio-peque);
+    }
+  }
+}
+/* Para portátil */
+@media screen and (max-width: 1400px) { 
+  .contenido{
+    min-height: 80vh;
+  }
+}
+
+/* Para móvil */
+@media screen and (max-width: 500px) {
+  .tablaMisClases th, .tablaMisClases td{
+    padding: 5px;
+    font-size: var(--size-peque);
+  }
+}

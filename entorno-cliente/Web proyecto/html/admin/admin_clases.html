@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriveSmart</title>
+    <link rel="stylesheet" href="../../css/admin_clases.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200'>
+    <script src="../../js/admin/menuUserAdmin.js"></script>
+    <script>
+        //Solo permite entrar a administradores
+        document.addEventListener("DOMContentLoaded", function () {
+            const usuarioRol = localStorage.getItem("usuarioRol");
+
+            if (usuarioRol !== "1") {
+                console.log(usuarioRol);
+                alert("No tiene permisos para acceder a esta página");
+                window.location.href = "../home.html";
+                return;
+            }
+        });
+    </script>
+</head>
+<body>
+    <header></header>
+    <nav></nav>
+    <div class="contenido">
+        <div class="opciones">
+            <button id="btnVistaTabla">Vista tabla</button>
+            <button id="btnVistaCalendario">Vista calendario</button>
+        </div>
+        <div class="vistaTabla">
+            <h1 id="fecha-seleccionada">Agenda</h1>
+            <div class="filtro-fecha">
+                <label for="fecha-input">Seleccionar fecha:</label>
+                <input type="date" id="fecha-input">
+            </div>
+            <div class="filtro-nombre">
+                <label for="nombre-apellidos-input">Nombre y Apellidos:</label>
+                <input type="text" id="nombre-apellidos-input" placeholder="Nombre y Apellidos">
+            </div>
+            <div class="filtro-permiso">
+                <label for="permiso-tabla">Seleccionar permiso:</label>
+                <select id="permiso-tabla" class="permiso-tabla" name="permiso-tabla">
+                    <option value="">Todos</option>
+                    <!-- Carga dinámica de permisos en el desplegable -->
+                </select>
+            </div>
+            <div class="clases">
+                <table class="tablaClases">
+                    <thead>
+                        <tr>
+                            <th class="thFecha">Fecha</th>
+                            <th class="thHora">Hora</th>
+                            <th class="thLugar">Lugar</th>
+                            <th class="thUsuario">Usuario</th>
+                            <th class="thPermiso">Permiso</th>
+                            <th class="thEliminar">Eliminar</th> <!-- Nueva columna para eliminar -->
+                        </tr>
+                    </thead>
+                    <tbody id="tablaCuerpo">
+                        <!-- Carga dinámica de las filas - una fila por cada usuario -->
+                    </tbody>
+                </table>
+                <h2 id="mensaje-clases" class="mensaje-clases"></h2>
+            </div>
+            <!-- Modal de confirmación para eliminar una reserva -->
+            <div id="confirmModal" class="modal">
+                <div class="modal-content">
+                    <p id="confirmText">¿Estás seguro de que deseas eliminar la reserva?</p>
+                    <strong>Se eliminarán todos los datos relacionados con esta reserva.</strong>
+                    <div class="modal-buttons">
+                        <button id="confirmYes">Sí</button>
+                        <button id="confirmNo">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="vistaCalendario oculto">
+            <h1>Calendario</h1>
+            <div class="wrapper">
+                <div class="cabeceraMes">
+                    <p class="fecha-actual"></p>
+                    <div class="divPermiso">
+                        <label for="permiso">Seleccionar permiso:</label>
+                        <select id="permiso" class="permiso" name="permiso">
+                            <!-- Carga dinámica de permisos en el desplegable -->
+                        </select>
+                    </div>
+                    <div class="divTurno">
+                        <label for="turno">Seleccionar turno:</label>
+                        <select id="turno" class="turno" name="turno">
+                            <option value="mañana">Mañana</option>
+                            <option value="tarde">Tarde</option>
+                        </select>
+                    </div>
+                    <div class="iconos">
+                        <span id="anterior" class="material-symbols-rounded">chevron_left</span>
+                        <span id="siguiente" class="material-symbols-rounded">chevron_right</span>
+                    </div>
+                </div>
+                <div class="calendario">
+                    <ul class="semanas">
+                        <li>Lunes</li>
+                        <li>Martes</li>
+                        <li>Miércoles</li>
+                        <li>Jueves</li>
+                        <li>Viernes</li>
+                        <li>Sábado</li>
+                        <li>Domingo</li>
+                    </ul>
+                    <ul class="dias"></ul>
+                </div>
+            </div>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <div class="seccion">
+                        <p id="modal-message" class="modal-message"></p>
+                    </div>
+                    <div class="seccion">
+                        <label for="usuario-busqueda">Buscar Usuario:</label>
+                        <input type="text" id="usuario-busqueda" placeholder="Nombre o Apellidos">
+                        <div id="usuario-resultados" class="usuario-resultados">
+                        </div>
+                    </div>
+                    <div class="seccion">
+                        <label for="lugar">Selecciona un lugar de salida:</label>
+                        <select name="lugar" id="lugar">
+                            <option value="lugar1">Circuito DriveSmart</option>
+                            <option value="lugar2">Pablo Iglesias</option>
+                            <option value="lugar3">Av del Molinón</option>
+                            <option value="lugar4">Begoña</option>
+                            <option value="lugar5">Pachín de Melás</option>
+                        </select>
+                    </div>
+                    <div class="buttons seccion">
+                        <button id="confirmar">Confirmar</button>
+                        <button id="cancelar">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+            <div id="modal-detalles-reserva" class="modal-detalles-reserva">
+                <div class="modal-detalles-content">
+                    <p id="detalles-reserva-texto"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../js/admin/admin_clases.js"></script>
+</body>
+</html>

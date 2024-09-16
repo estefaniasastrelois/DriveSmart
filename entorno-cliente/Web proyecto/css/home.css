@@ -1,0 +1,253 @@
+@import url(comun.css);
+
+body{
+    overflow-x: hidden;
+}
+footer{
+    width: 100%;
+}
+/*-------------------------------SECCION UNO------------------------*/
+img{
+    width: 100%;
+}
+.cuadrados{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    justify-content: space-around;
+    position: absolute;
+    bottom: -230px;
+}
+.cuadrados div{
+    background-color: var(--color-azul-suave);
+    border: 5px solid var(--color-morado-medio);
+    height: 180px;
+    width: 170px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.cuadrados div:hover{
+    background-color: var(--color-morado-suave);
+}
+.cuadrados .peque img{
+    width: 120px;
+    height: 120px;
+    margin-top: -10px;
+}
+.cuadrados .grande img{
+    width: 80px;
+    height: 80px;
+    margin-bottom: 31px;
+}
+
+/*-------------------------------SECCION DOS------------------------*/
+.seccionDosHome{
+    margin-top: -5px;
+    padding-top: 200px;
+    background-color: var(--color-azul-suave);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.seccionDosHome img{
+    width: 600px;
+}
+.barraCentral{
+    height: 200px;
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    margin-top: -5px;
+}
+.impar, .par{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex-grow: 1; /* Ocupar todo el espacio disponible */
+    flex: 1; /* Alternativa a flex-grow para ocupar todo el espacio disponible */
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+.impar i, .par i{
+    font-size: 60px;
+}
+.impar {
+    background-color: var(--color-morado-medio);
+}
+.par {
+    background-color: var(--color-azul-fuerte);
+}
+
+.seccionDosSuperior{
+    display: flex;
+    flex-direction: row;
+}
+.seccionDosSuperiorDch{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 100px;
+}
+.seccionDosSuperiorDch h3{
+    font-size: var(--size-grande);
+}
+.seccionDosSuperiorDch h4{
+    font-size: var(--size-medio);
+}
+
+
+/*-------------------------------SECCION TRES - INSTAGRAM------------------------*/
+.seccionTresHome{
+    background-color: var(--color-azul-suave);
+    padding: 100px 0px 100px 0px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+.seccionTresSuperior{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-bottom: 20px;
+    h3{
+        margin-top: 17px;
+    }
+}
+.aprobados img{
+    width: 240px;
+    height: 270px;
+}
+.iconoInstagram{
+    width: 60px;
+}
+
+
+.whatsapp-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    a{
+        text-decoration: none;
+        color: var(--color-morado-medio);
+    }
+}
+
+.whatsapp-bubble {
+    display: none;
+    position: relative;
+    background-color: var(--color-azul-suave);
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra alrededor del bocadillo */
+}
+
+.whatsapp-bubble::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -10px;  /* Posición del rabito del bocadillo */
+    transform: translateY(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--color-morado-medio); /* Efecto del rabito del bocadillo */
+}
+
+.whatsapp-icon {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.whatsapp-container:hover .whatsapp-icon {
+    animation: vibrate 0.3s linear infinite;
+}
+
+.whatsapp-container:hover .whatsapp-bubble {
+    display: block;
+}
+
+@keyframes vibrate {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+    75% { transform: translateX(-2px); }
+    100% { transform: translateX(0); }
+}
+
+
+
+/* --------------------------MEDIA QUERYS--------------------------*/
+/* Para 1920x1080px*/
+@media screen and (min-width: 1800px) {
+    .cuadrados{
+        margin-bottom: 200px;
+    }
+    h3{
+        font-size: var(--size-medio-peque);
+    }
+}
+
+/* Para móvil */
+@media screen and (max-width: 500px) {
+    .cuadrados{
+        width: 400px;
+    }
+    .cuadrados div{
+            width: 100px;
+            height: 120px;
+            
+    }
+    .seccionDosHome{
+        padding-top: 50px;
+        .seccionDosSuperior, .barraCentral{
+            flex-direction: column;
+        }
+
+        img{
+            width: 400px;
+        }
+    }
+    .seccionDosSuperiorDch h3 {
+        font-size: var(--size-medio);
+    }
+    .seccionDosSuperiorDch {
+        padding-top: 10px;
+        text-align: center;
+    }
+    .barraCentral{
+        padding-top: 50px;
+    }
+    .impar, .par{
+        padding: 10px;
+    }
+    .impar i, .par i {
+        font-size: 40px;
+    }
+    .cuadrados{
+        display: none;
+    }
+    .seccionTresHome{
+        padding-top: 500px;
+        .seccionTresInferior{
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .seccionTresInferior img{
+            align-items: center;
+        }
+    }
+}

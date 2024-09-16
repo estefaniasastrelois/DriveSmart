@@ -1,0 +1,293 @@
+@import url(comun.css);
+
+.contenido{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--color-morado-fuerte);
+    min-height: 100vh;
+}
+.contenido h1{
+    color: var(--color-morado-medio);
+    font-family: var(--fuente-plus);
+}
+.contenido h1{
+    margin-top: -20px;
+    margin-bottom: -10px;
+}
+
+table{
+    width: 1000px;
+    background-color: var(--color-azul-suave);
+    border-collapse: collapse;
+    border-radius: 20px;
+    color: var(--color-morado-muy-fuerte);
+}
+.nombre{
+    width: 250px;
+}
+.apellidos, .descripcion{
+    width: 500px;
+    padding-left: 10px;
+    padding: 10px;
+}
+.nombre{
+    border-top-left-radius: 20px;
+}
+.editar, .eliminar{
+    text-align: center;
+}
+.eliminar{
+    border-top-right-radius: 20px;
+}
+th, td{
+    padding: 0px 20px;
+}
+th{
+    background-color: var(--color-morado-medio);
+    color: var(--color-morado-suave);
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+/* Cada nueva fila de un usuario */
+tr{
+    border-bottom: 3px solid var(--color-morado-fuerte);
+}
+tr:last-of-type{
+    border-bottom: none;
+}
+i{
+    font-size: var(--size-medio);
+}
+i:hover{
+    color: var(--color-morado-medio);
+}
+
+
+
+/* ---------------PANEL MODAL PARA AGREGAR NUEVO---------------*/
+/* Botón de cierre (x) */
+.modal .close, .matriculacionModal .closeMatriculacion, .modalNuevoTest-content .modalNuevoTest-close{
+        color: #7d7c7c;
+        float: right;
+        margin-top: -20px;
+        margin-right: -10px;
+        font-size: var(--size-medio);
+        font-weight: bold;
+}
+.modal .close:hover,.modal .close:focus{
+        color: var(--color-morado-fuerte);
+        text-decoration: none;
+        cursor: pointer;
+}
+.closeMatriculacion{
+    cursor: pointer;
+}
+/* Estilo para el modal */
+.modal, .matriculacionModal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.6); 
+    color: var(--color-morado-fuerte);
+}
+
+/* Contenido del modal */
+.modal-content, .modalNuevoTest-content{
+    background-color: var(--color-azul-suave);
+    margin: 10% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 480px;
+    border-radius: 10px; 
+}
+.ventanaTest .modal-content{
+    width: 80vw;
+}
+.modalNuevoTest .modalNuevoTest-content{
+    width: 50vw;
+    .seccion{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+}
+#matriculacionForm, #nuevoTestForm{
+    display:flex;
+    flex-direction: column;
+    gap: 20px;
+    button{
+        width: 200px;
+    }
+}
+.seccionCheckbox{
+    display:flex;
+    flex-direction: row;
+    gap: 5px;
+}
+.modal h2, .matriculacionModal h2{
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: var(--size-medio);
+    font-family: var(--fuente-plus);
+    margin: -15px 0px -10px 0px;
+}
+.modal .seccion, .modalNuevoTest .seccion{
+    display: flex;
+    flex-direction: row;
+}
+.checkboxContainer{
+    display:flex;
+    flex-direction: row;
+    gap: 30px;
+}
+.modal label{
+    width: 130px;
+}
+.modal input{
+    margin: 5px;
+    padding: 2px 5px;
+    width: 300px;
+    color: var(--color-morado-fuerte);
+}
+.guardarDiv, .actualizarDiv{
+    margin-top: 35px;
+    margin-bottom: -10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirmModal{
+    flex-direction: column;
+    justify-content: space-around;
+}
+.modal-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.buttonsGestionUsuarios{
+    display:flex;
+    flex-direction: row;
+    gap: 30px;
+}
+.buscaUsuarioMatricula{
+    display:flex;
+    flex-direction: row;
+}
+.usuario-resultados{
+    position: absolute;
+    z-index: 2;
+    background-color: white;
+    width: 258px;
+    max-height: 200px;
+    cursor: pointer;
+    margin-left: 150px;
+    margin-top: 23px;
+    border: 1px solid #ccc;
+}
+
+#permisoForm .seccion{
+    display:flex;
+    label{
+        width:30%;
+    }
+    input, textarea{
+        width: 70%;
+        margin: inherit;
+    }
+    textarea{
+        height: 200px;
+    }
+}
+.seccion-descripcion{
+    margin-top: 10px;
+    label{
+        margin-top: 5px;
+    }
+}
+.seccionPermisos{
+    margin-top: 20px;
+}
+.permisosContainer .seccion{
+    width: 20px;
+}
+.permisosContainer{
+    display:flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+
+
+
+
+/* --------------------------MEDIA QUERYS--------------------------*/
+/* Para 1920x1080px*/
+@media screen and (min-width: 1800px) {
+    .modal-content{
+        width: 700px;
+    }
+    #modalTitle, #modalTitleMatriculas{
+        font-size:var(--size-medio-grande);
+    }
+    #usuarioForm, #matriculacionForm, #permisoForm{
+        label, input{
+            font-size: var(--size-medio-peque);
+        }
+        input:not([type="checkbox"]) {
+            width: 500px;
+            padding: 5px 8px;
+            margin-left: 10px;
+        }
+        .seccion{
+            margin-top: 15px;
+        }
+        input[type="checkbox"] {
+            width: 60px;
+        }
+    }
+    .usuario-resultados{
+        width: 468px;
+        margin-left: 191px;
+        margin-top: 54px;
+        div{
+            font-size: var(--size-medio-peque);
+        }
+    }
+    table{
+        width: 1200px;
+        th, td{
+            font-size: var(--size-medio-peque);
+        }
+    }
+    .modalNuevoTest{
+        h2{
+            font-size: var(--size-grande);
+        }
+        label, select{
+            font-size: var(--size-medio-peque);
+        }
+    }
+    #permisoForm .seccion{
+        label{
+            margin-top: 10px;
+        }
+        textarea{
+            margin-left: -2px;
+        }
+    }
+    #confirmModal .modal-content{
+        p, strong{
+            font-size: var(--size-medio-peque);
+        }
+    }
+}

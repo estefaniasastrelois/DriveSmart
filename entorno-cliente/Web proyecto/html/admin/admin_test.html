@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin test</title>
+    <link rel="stylesheet" href="../../css/admin_test.css">
+    <script src="../../js/admin/menuUserAdmin.js"></script>
+    <script>
+        //Solo permite entrar a administradores
+        document.addEventListener("DOMContentLoaded", function() {
+            const usuarioRol = localStorage.getItem("usuarioRol");
+
+            if (usuarioRol !== "1") {
+                console.log(usuarioRol);
+                alert("No tiene permisos para acceder a esta página");
+                window.location.href = "../home.html";
+                return;
+            }
+        });
+    </script>
+</head>
+<body>
+    <header></header>
+    <nav></nav>
+    <div class="contenido">
+        <h1 class="tituloPrincipal">Selecciona permiso</h1>
+        <button class="nuevoTestBtn">Nuevo test</button>
+        <div class="pasoUno">
+            <div class="lista-permisos"></div>
+            <div class="contenedor-seleccion-ambito-oculto">
+                <div class="permiso-seleccionado"></div>
+                <img src="../../imagenes/back.png" id="btnVolver" class="btnVolver icono">
+                <h2>Selecciona ámbito</h2>
+                <div class="opciones-seleccion">
+                        <button id="btnGlobal" class="btnGlobal">Global</button>
+                        <button id="btnTemas" class="btnTemas">Temas</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pasoDos">
+            <div class="contenedor-test-filtrados-oculto">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para nuevo test -->
+    <div id="nuevoTestModal" class="modal modalNuevoTest">
+        <div class="modalNuevoTest-content">
+            <span class="modalNuevoTest-close">&times;</span>
+            <h2>Crear Nuevo Test</h2>
+            <form id="nuevoTestForm">
+                <div class="seccion">
+                    <label for="permisoSelect">Selecciona Permiso:</label>
+                    <select id="permisoSelect" name="permiso">
+                        <!-- Opciones de permisos serán cargadas dinámicamente -->
+                    </select>
+                </div>
+                <div class="seccion seleccionAmbitoTema">
+                    <div id="seleccionAmbitoNuevoTest">
+                        <label for="ambitoSelect">Selecciona Ámbito:</label>
+                        <select id="ambitoSelect" name="ambito">
+                            <option value="global">Global</option>
+                            <option value="temas">Temas</option>
+                        </select>
+                    </div>
+
+                    <div id="seleccionTemaNuevoTest" class="seleccionTemaNuevoTest" style="display: none;">
+                        <label for="temaSelect">Selecciona Tema:</label>
+                        <select id="temaSelect" name="tema">
+                            <!-- Opciones de temas serán cargadas dinámicamente -->
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="crearTestBtn">Crear Test</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modal para editar un test -->
+    <div class="modal ventanaTest">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Contenido del test</h2>
+            <div class="preguntasTest"></div>
+            <div class="botonesGestionaTest">
+                <button class="btnAgregarPregunta">Añadir pregunta</button>
+                <button class="btnEliminar">Eliminar test</button>
+            </div>
+            <div id="contadores">
+                <p id="contador"></p>
+            </div>
+            <div class="divGuardar">
+                <button class="btnGuardar">Guardar</button>
+            </div>
+        </div>
+    </div>
+    <!-- Modal de confirmación para eliminar un test -->
+    <div id="modal-confirmacion-borrar" class="modal-confirmacion-borrar">
+        <div class="modal-confirmacion-borrar-content">
+            <span class="close-confirmacion-borrar">&times;</span>
+            <h2 id="modalTitle-confirmacion-borrar">¿Está seguro de que desea eliminar este test?</h2>
+            <div class="divGuardar">
+                <button id="btnSiBorrar" class="btnGuardar">Sí</button>
+                <button id="btnNoBorrar" class="btnGuardar">No</button>
+            </div>
+        </div>
+    </div>
+    <!-- Modal de confirmación para eliminar una pregunta -->
+<div id="modal-confirmacion-borrar-pregunta" class="modal-confirmacion-borrar-pregunta">
+    <div class="modal-confirmacion-borrar-pregunta-content">
+        <span class="close-confirmacion-borrar-pregunta">&times;</span>
+        <h2>¿Está seguro de que desea eliminar esta pregunta?</h2>
+        <div class="divGuardar">
+            <button id="btnSiBorrarPregunta" class="btnGuardar">Sí</button>
+            <button id="btnNoBorrarPregunta" class="btnGuardar">No</button>
+        </div>
+    </div>
+</div>
+    <!-- Modal de confirmación -->
+    <div id="modal-confirmacion-crear" class="modal-confirmacion-crear">
+        <div class="modal-confirmacion-crear-content">
+            <h2 id="modalTitle-confirmacion-crear">El test tiene menos de 30 preguntas. ¿Desea continuar?</h2>
+            <div class="divGuardar">
+                <button id="btnSi" class="btnGuardar">Sí</button>
+                <button id="btnNo" class="btnGuardar">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/admin/admin_test.js"></script>
+</body>
+</html>

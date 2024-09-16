@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="../css/registro.css">
+    <script src="../js/menuUserAnonimo.js"></script>
+    <script src="../js/footer.js"></script>
+</head>
+<body>
+    <header></header>
+    <nav></nav>
+    <div class="contenido">
+        <form id="registroForm">
+            <input type="hidden" id="usuarioId" name="usuarioId">
+            <div class="seccion">
+                <label for="nombre"><span class="obligatorio">*</span> Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="seccion">
+                <label for="apellidos"><span class="obligatorio">*</span> Apellidos:</label>
+                <input type="text" id="apellidos" name="apellidos" required>
+            </div>
+            <div class="seccion">
+                <label for="dni"><span class="obligatorio">*</span> DNI:</label>
+                <input type="text" id="dni" name="dni" required>
+            </div>
+            <div class="seccion">
+                <label for="email"><span class="obligatorio">*</span> Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="seccion">
+                <label for="telefono"><span class="obligatorio">*</span> Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+            </div>
+            <div class="seccion">
+                <label for="password"><span class="obligatorio">*</span> Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <input type="hidden" id="rolId" name="rolId" value=2>
+            <div class="guardar">
+                <button type="button" id="guardar">Guardar</button>
+            </div>
+        </form>
+    </div>
+    <div id="modal" class="modal" display="none">
+        <div class="modal-contenido">
+            <p>Su registro se ha realizado correctamente. Acceda al área de clientes para iniciar sesión.</p>
+        </div>
+    </div>
+    <footer></footer>
+    <script src="../js/registro.js"></script>
+</body>
+</html>

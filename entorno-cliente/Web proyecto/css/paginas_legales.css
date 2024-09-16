@@ -1,0 +1,58 @@
+@import url(comun.css);
+.contenido{
+    padding: 50px;
+}
+div{
+    width: 100vw;
+    display:flex;
+    flex-direction: column;
+}
+h2{
+    font-size: var(--size-grande);
+    margin-bottom: 30px;
+}
+h3{
+    letter-spacing: 1px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+ul{
+    width: 98.5vw;
+}
+li{
+    margin-left: 40px;
+}
+.titulo{
+    display:flex;
+    align-items: center;
+}
+
+
+
+
+/* --------------------------MEDIA QUERYS--------------------------*/
+/* Para 1920x1080px*/
+@media screen and (min-width: 1800px) {
+    h2{
+        font-size: var(--size-muy-grande);
+    }
+    h3, p, li{
+        font-size: var(--size-medio-peque);
+    }
+}
+
+/* Para móvil */
+@media screen and (max-width: 500px) {
+    .contenido{
+        padding: 15px;
+        *{
+            width: 400px;
+        }
+        li{
+            width: 360px;
+        }
+    }
+    h2{
+        margin-bottom: 0px;
+    }
+}

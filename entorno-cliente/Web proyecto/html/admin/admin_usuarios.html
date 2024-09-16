@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Usuarios</title>
+    <link rel="stylesheet" href="../../css/admin_crud.css">
+    <script src="../../js/admin/menuUserAdmin.js"></script>
+    <script>
+        //Solo permite entrar a administradores
+        document.addEventListener("DOMContentLoaded", function() {
+            const usuarioRol = localStorage.getItem("usuarioRol");
+
+            if (usuarioRol !== "1") {
+                console.log(usuarioRol);
+                alert("No tiene permisos para acceder a esta página");
+                window.location.href = "../home.html";
+                return;
+            }
+        });
+    </script>
+</head>
+<body>
+    <header></header>
+    <nav></nav>
+    <div class="contenido">
+        <h1>Usuarios registrados</h1>
+        <div class="buttonsGestionUsuarios">
+            <button class="nuevo">Nuevo usuario</button>
+            <button class="matriculas">Matriculas</button>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="nombre">Nombre</th>
+                        <th class="apellidos">Apellidos</th>
+                        <th class="permisos">Permisos</th>
+                        <th class="editar">Editar</th>
+                        <th class="eliminar">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody id="usuariosBody">
+                    <!-- Aquí se agregarán las filas de los usuarios -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <!-- Contenido del modal -->
+        <div class="modal-content">
+        <!-- Botón de cierre (x) -->
+        <span class="close">&times;</span>
+        <!-- Título del modal -->
+        <h2 id="modalTitle">Nuevo Usuario</h2>
+        <!-- Formulario para ingresar los datos del nuevo usuario -->
+        <form id="usuarioForm">
+            <input type="hidden" id="usuarioId" name="usuarioId">
+            <div class="seccion">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="seccion">
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" name="apellidos" required>
+            </div>
+            <div class="seccion">
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" name="dni" required>
+            </div>
+            <div class="seccion">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="seccion">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+            </div>
+            <input type="hidden" id="rolId" name="rolId" value=2>
+            <input type="hidden" id="password" name="password">
+
+            <!-- Botón para guardar los datos del nuevo usuario -->
+            <div class="guardarDiv">
+                <button type="button" id="guardar">Guardar</button>
+                <button type="button" id="actualizar" style="display: none;">Actualizar</button>
+            </div>
+        </form>
+        </div>
+    </div>
+    <!-- Modal de confirmación -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+        <p id="confirmText">¿Estás seguro de que deseas eliminar el usuario?</p>
+        <strong>Se eliminarán todas las matrículas, prácticas y registros de test realizados por el usuario.</strong>
+        <div class="modal-buttons">
+            <button id="confirmYes">Sí</button>
+            <button id="confirmNo">No</button>
+        </div>
+        </div>
+    </div>
+    <!-- Modal de matriculación -->
+    <div id="matriculacionModal" class="matriculacionModal">
+        <div class="modal-content">
+            <!-- Botón de cierre (x) -->
+            <span class="closeMatriculacion">&times;</span>
+            <h2 id="modalTitleMatriculas">Matrículas</h2>
+            <form id="matriculacionForm">
+                <div class="buscaUsuarioMatricula">
+                    <label for="usuario-busqueda-matricula">Buscar Usuario:</label>
+                    <input type="text" id="usuario-busqueda-matricula" placeholder="Nombre o Apellidos">
+                    <div id="usuario-resultados-matricula" class="usuario-resultados"></div>
+                </div>
+                <div id="checkboxContainer" class="checkboxContainer">
+                    <!-- Aquí se añadirán los checkboxes de permisos -->
+                </div>
+                <div class="guardarDiv">
+                    <button type="button" id="guardarMatriculacion">Matricular</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="../../js/admin/admin_usuarios.js"></script>
+</body>
+</html>

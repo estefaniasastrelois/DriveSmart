@@ -1,0 +1,512 @@
+@import url(admin_crud.css);
+@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
+
+/* GENERALES */
+.contenido{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 200vh;
+}
+.contenedor-seleccion-ambito-visible h2{
+    font-size: var(--size-grande);
+    font-family: var(--fuente-plus);
+    color: var(--color-morado-medio);
+    margin-top: -30px;
+    margin-bottom: -30px;
+}
+
+
+/* ----------------------------------------------------- */
+/* ----------------------------------------------------- */
+/* ------------------LISTADO DE PERMISOS---------------- */
+.contenido .lista-permisos{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    width: 90vw;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 75vh;
+}
+.contenido .lista-permisos-mini{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    width: 90vw;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 35vh;
+}
+.divPermiso{
+    width: 28vw;
+    height: 16vw;
+    border: 8px solid var(--color-azul-medio);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-repeat: no-repeat;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+.divDatos{
+    width: 100%;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height:0;
+    box-sizing: border-box;
+    min-height: 18%;
+}
+.divPermiso h2, .divPermiso p{
+    background-color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    width: 100%;
+    padding: 10px;
+    font-size: var(--size-medio-peque);
+    transition: font-size 2s;
+}
+.divPermiso h2{
+    border-bottom-left-radius: 13px;
+    width: 23%;
+    background-color: var(--color-morado-medio-transparente);
+    color: var(--color-azul-medio);
+}
+.divDescripcion{
+    border-bottom-right-radius: 16px;
+    width: 78%;
+    height: 100%;
+}
+.divDescripcion .descripcionSecundaria{
+    font-size: var(--size-normal);
+    padding-bottom: 70px;
+}
+
+/* ----------------------------------------------------- */
+/* ----------------------------------------------------- */
+/* -------------PASO DOS - SELECCIONA ÁMBITO-------------*/
+.contenedor-seleccion-ambito-oculto{
+    display: none;
+}
+.contenedor-seleccion-ambito-visible{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.btnVolver{
+    height: 70px;
+    width: 70px;
+    position: absolute;
+    top: 300px;
+    left: 100px;
+}
+.opciones-seleccion{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+.permiso-seleccionado{
+    margin-bottom: 40px;
+}
+.contenedor-test-filtrados-oculto{
+    display: none;
+}
+.contenedor-test-filtrados-visible{
+    width: 75vw;
+    max-width: 75vw;
+    height: 50vw;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;  /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente */
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ----------------------------------------------------- */
+/* ----------------------------------------------------- */
+/* -----------PASO TRES - SELECCIÓN DE TEST------------- */
+.divTest{
+    width: 80px;
+    height: 80px;
+    background-color: var(--color-azul-medio);
+}
+.contenedor-test-filtrados h1{
+    color: var(--color-azul-suave);
+}
+.divTest{
+    border: 7px solid var(--color-azul-suave);
+    border-radius: 10px;
+    padding: 10px;    
+    color: var(--color-morado-medio);
+    font-size: var(--size-medio);
+    font-family: var(--fuente-plus);
+}
+i{
+    width: 30px;
+    height: 30px;
+    font-size: var(--size-medio);
+}
+.divTestTema, .divTestGlobales{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.divTema h3{
+    color: var(--color-azul-medio);
+}
+.lineaSeparador {
+    width: 50vw; 
+    border-bottom: 1px solid var(--color-azul-medio);
+    margin-bottom: 10px; 
+}
+.divTest{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* ----------------------------------------------------- */
+/* ----------------------------------------------------- */
+/* ----------------VENTANA CONTENIDO TEST--------------- */
+.preguntasTest{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.divPregunta{
+    background-color: var(--color-azul-medio-transparente);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 1px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 1); /* Agrega la sombra */
+    .imgPregunta{
+        margin-top: 10px;
+        width: 300px;
+        height: 250px;
+        border: 10px solid white;
+        margin: 15px auto;
+    }
+}
+.divEnunciado{
+    background-color: var(--color-morado-medio);    
+    border-radius: 7px 7px 0px 0px;
+    width: 100%;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+}
+.divRespuestas{
+    padding: 25px 15px 15px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.divRespuesta{
+    display: flex;
+    flex-direction: row;
+
+}
+.opcion{
+    background-color: white;
+    border: 3px solid var(--color-morado-medio);
+    border-radius: 10px;
+}
+.modal input[type="text"]{
+    width: 100%;
+    padding: 8px;
+}
+input[type="radio"]{
+    width: 2.5%;
+}
+.modal .respuestaInput{
+    border-radius: 10px;
+}
+.modal .enunciadoInput{
+    border-radius: 7px 7px 0px 0px;
+}
+.modal-content{
+    background-color: var(--color-azul-suave);
+}
+input.enunciadoInput{
+    background-color: var(--color-morado-medio);
+    color: white;
+    font-weight: bold;
+    margin: 0px;
+    width: 100%;
+}
+.enunciadoInputPlaceholder::placeholder {
+    color:gainsboro;
+    font-weight: normal;
+}
+.enunciadoInput, .respuestaInput{
+    border: none;
+}
+.flecha{
+    width: 30px;
+    height: 40px;
+}
+.divGuardar, .divTerminar{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.opcion:hover, .seleccionado{
+    background-color: var(--color-morado-fuerte);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+.flecha{
+    width: 30px;
+    height: 40px;
+}
+
+/* Estilo para RadioButton marcados */
+.radioInput:checked + .respuestaInput {
+    background-color: var(--color-morado-fuerte);
+    color: white; 
+    font-weight: bold;
+}
+.botonesGestionaTest{
+    margin-top: 30px;
+    display:flex;
+    justify-content: space-between;
+}
+.divGuardar{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.resultado{
+    margin-bottom:10px;
+}
+.info{
+    padding: 10px;
+    background-color: var(--color-azul-fuerte);
+    color: white;
+    font-weight: bold;
+}
+.respuestaCorrecta{
+    color:green;
+    font-weight: bold;
+}
+.respuestaSeleccionada{
+    font-weight: bold;
+}
+.icono{
+    width: 45px;
+    height: 45px;
+    margin-right: 3px;
+}
+
+
+
+/* -------------------------MODAL DE NUEVO TEST---------------------*/
+.modalNuevoTest{
+    .modalNuevoTest-content {
+        width: 30vw;
+    }
+    #nuevoTestForm{
+        margin-top: 15px;
+        align-items: center;
+        .seccion{
+            min-width: 270px;
+        }
+        .seleccionAmbitoTema{
+            flex-direction: column;
+        }
+        button{
+            margin: 15px 0px 15px 0px;
+        }
+    }
+}
+
+
+
+/* ----------MODALES DE CONFIRMACIÓN AL CREAR UN TEST CON MENOS DE 30 PREGUNTAS Y AL ELIMINAR UN TEST O PREGUNTA---------- */
+.modal-confirmacion-crear, .modal-confirmacion-borrar, .modal-confirmacion-borrar-pregunta, .modal-confirmacion-borrar  {
+    display: none;
+    position: fixed; /* Cambiado a fixed para asegurar que se muestra por encima de todo */
+    z-index: 9999; /* Asegura que está por encima de cualquier otro contenido */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Habilita el scroll si es necesario */
+    background-color: rgba(0,0,0,0.4); /* Color de fondo semitransparente */
+}
+.modal-confirmacion-crear-content, .modal-confirmacion-borrar-content, .modal-confirmacion-borrar-pregunta-content, .modal-confirmacion-borrar-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Centra la ventana de confirmación */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 550px; /* Ajusta el tamaño máximo de la ventana */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); /* Sombra para darle profundidad */
+}
+.modal-confirmacion-crear #btnSi, .modal-confirmacion-crear #btnNo{
+    width: 150px;
+}
+.divPapelera {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: 10px;
+    color: rgb(230, 5, 5);
+}
+.iconoPapelera {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.close-confirmacion-borrar-pregunta, .close-confirmacion-borrar {
+    position: absolute;
+    top: 200px;
+    right: 407px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+.close-confirmacion-borrar-pregunta:hover, .close-confirmacion-borrar-pregunta:focus, 
+.close-confirmacion-borrar:hover, .close-confirmacion-borrar:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+/* --------------------------MEDIA QUERYS--------------------------*/
+
+/* Para 1920x1080px*/
+@media screen and (min-width: 1800px) {
+    .contenido{
+        height: 140vh;
+    }
+    #modalTitle{
+        font-size: var(--size-grande);
+    }
+    .btnAgregarPregunta{
+        width: 320px;
+    }
+    .divPregunta .enunciadoInput, .divPregunta .divRespuestas .respuestaInput{
+        font-size: var(--size-medio-peque);
+    }
+    .enunciadoInput{
+        padding: 10px;
+    }
+    .divRespuestas{
+        padding: 30px 20px 20px 20px;
+    }
+    .icono{
+        width: 60px;
+        height: 60px;
+    }
+    .iconoPapelera{
+        width: 40px;
+        height: 40px;
+    }
+    #contador{
+        font-size: var(--size-medio-peque);
+    }
+    .divTema h3{
+        font-size: var(--size-medio);
+    }
+    .divTest{
+        width: 100px;
+        height: 100px;
+        font-size: 40px;
+    }
+    .divTema{
+        max-width: 95%;
+    }
+    .contenedor-test-filtrados-visible{
+        top: 85%;
+    }
+    .modalNuevoTest #nuevoTestForm .seccion {
+        margin-top: 5px;
+        min-width: 400px;
+        select{
+            margin-left: 5px;
+        }
+    }
+    .modal-confirmacion-borrar-pregunta-content,  .modal-confirmacion-borrar-content{
+        max-width: 700px;
+        h2{
+            font-size: var(--size-medio-peque);
+            text-align: center;
+        }
+        .close-confirmacion-borrar-pregunta, .close-confirmacion-borrar{
+            top: 285px;
+            right: 620px;
+        }
+    }
+}
+
+/* Para portatil */
+@media screen and (max-width: 1400px){
+    .contenedor-test-filtrados-visible{
+        top: 125%;
+    }
+}
+
+/* Para móvil */
+@media screen and (max-width: 500px){
+    .contenido .tituloPrincipal, .contenedor-seleccion-ambito-visible h2{
+        font-family: var(--fuente-futurista);
+        margin: 5px 0px 15px 0px;
+    }
+    .opciones-seleccion{
+        margin-top: inherit;
+    }
+    .divPermiso{
+        height: 250px;
+        width: 400px;
+    }
+    .divPermiso h2{
+        margin-top: 0px;
+        height: 50px;
+        padding: 10px 0px 0px 10px;
+    }
+    .btnVolver{
+        top: 250px;
+        left: 350px;
+    }
+    .contenido .lista-permisos {
+        height: inherit;
+        gap: 30px;
+    }
+    .ventanaTest .modal-content {
+        width: 95vw;
+        margin-left: 10px;
+        .enunciado, .opcion{
+            font-size: var(--size-peque);
+        }
+    }   
+    .contenedor-test-filtrados-visible {
+        top: 132%;
+    }
+    input[type="radio"] {
+        width: 7%;
+    }
+}
